@@ -1,7 +1,13 @@
+import json
+
+
 class Nester:
     @staticmethod
     def __validate(source_data, nesting_levels):
-        pass
+        if not source_data:
+            raise ValueError('No source data passed.')
+        if not nesting_levels:
+            raise ValueError('No nesting levels passed.')
 
     @staticmethod
     def nest(source_data, nesting_levels):
@@ -24,4 +30,4 @@ class Nester:
 
     @staticmethod
     def nest_json(source_data, nesting_levels):
-        pass
+        return json.dumps(Nester.nest(json.loads(source_data), nesting_levels))
