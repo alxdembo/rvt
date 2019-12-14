@@ -1,7 +1,6 @@
 import json
 import sys
 import unittest
-from contextlib import redirect_stdout, contextmanager
 import io
 from unittest.mock import patch
 
@@ -49,21 +48,12 @@ class NesterTest(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-    @contextmanager
-    def captured_output(self):
-        new_out, new_err = io.StringIO(), io.StringIO()
-        old_out, old_err = sys.stdout, sys.stderr
-        try:
-            sys.stdout, sys.stderr = new_out, new_err
-            yield sys.stdout, sys.stderr
-        finally:
-            sys.stdout, sys.stderr = old_out, old_err
 
     def test_nest_cli(self):
         input_json = 'input/original_task.json'
         output_json = 'output/original_task.json'
 
-        sys.argv = sys.argv[:2] + ['currency', 'country', 'city']
+        sys.argv = ['', 'currency', 'country', 'city']
         sys.stdin = open(TEST_CASE_DIR + input_json, 'r')
 
         with patch('sys.stdout', new=io.StringIO()) as output:
