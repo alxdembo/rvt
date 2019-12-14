@@ -33,3 +33,11 @@ Use method POST:
 ## Testing 
 
 The solution uses Django unittest wrapper to deal with requests smoother
+
+As mentioned, to run tests:
+
+    make test
+
+or 
+
+    python manage.py test
