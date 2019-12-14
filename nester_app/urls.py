@@ -1,7 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import path
 
-from api.helpers.basic_auth import auth_required
+from helpers.basic_auth import auth_required
 from api.views import ApiNest
 
 urlpatterns = [

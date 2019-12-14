@@ -4,25 +4,19 @@ import unittest
 from contextlib import redirect_stdout
 import io
 
+from helpers.test_helpers import load_testing_json, read_testing_json, TEST_CASE_DIR
 from .nester import Nester
 from .nest import NesterCli
 
-TEST_CASE_DIR = 'nester/test_cases/'
-
 
 class NesterTest(unittest.TestCase):
-    @staticmethod
-    def __load_json(filename):
-        with open('nester/test_cases/' + filename) as json_file:
-            return json.loads(json_file.read())
-
     def test_nest(self):
         input_json = 'input/original_task.json'
         output_json = 'output/original_task.json'
         nesting_levels = ['currency', 'country', 'city']
 
-        actual = Nester.nest(self.__load_json(input_json), nesting_levels)
-        expected = self.__load_json(output_json)
+        actual = Nester.nest(load_testing_json(input_json), nesting_levels)
+        expected = load_testing_json(output_json)
 
         self.assertEqual(expected, actual)
 
@@ -30,7 +24,7 @@ class NesterTest(unittest.TestCase):
         input_json = 'input/original_task.json'
         nesting_levels = ['123']
 
-        self.assertRaises(KeyError, Nester.nest, self.__load_json(input_json), nesting_levels)
+        self.assertRaises(KeyError, Nester.nest, load_testing_json(input_json), nesting_levels)
 
     def test_nest_raises_invalid_value_error(self):
         input_json = 'invalid json'
@@ -44,18 +38,13 @@ class NesterTest(unittest.TestCase):
 
         self.assertRaises(ValueError, Nester.nest_json, input_json, nesting_levels)
 
-    @staticmethod
-    def __read_json(filename):
-        with open(TEST_CASE_DIR + filename) as json_file:
-            return json_file.read()
-
     def test_nest_json(self):
         input_json = 'input/original_task.json'
         output_json = 'output/original_task.json'
         nesting_levels = ['currency', 'country', 'city']
 
-        actual = json.loads(Nester.nest_json(self.__read_json(input_json), nesting_levels))
-        expected = self.__load_json(output_json)
+        actual = json.loads(Nester.nest_json(read_testing_json(input_json), nesting_levels))
+        expected = load_testing_json(output_json)
 
         self.assertEqual(expected, actual)
 
@@ -71,7 +60,7 @@ class NesterTest(unittest.TestCase):
             NesterCli.nest()
         actual = json.loads(stdout.getvalue())
 
-        read_json = self.__read_json(output_json)
-        expected = json.loads(read_json)
+        read_json_output = read_testing_json(output_json)
+        expected = json.loads(read_json_output)
 
         self.assertEqual(expected, actual)
