@@ -22,7 +22,7 @@ Example:
         stdin_read = json.loads(sys.stdin.read())
         try:
             nested = Nester.nest(stdin_read, args.nested_levels)
-            print(json.dumps(nested, indent=2, sort_keys=True))
+            sys.stdout.write(json.dumps(nested, indent=2, sort_keys=True))
         except KeyError as e:
             sys.stderr.write(f"Could not find key: {e}\n")
         except JSONDecodeError as e:
