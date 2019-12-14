@@ -48,7 +48,6 @@ class NesterTest(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-
     def test_nest_cli(self):
         input_json = 'input/original_task.json'
         output_json = 'output/original_task.json'
