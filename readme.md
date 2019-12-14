@@ -2,10 +2,16 @@
 
 ## Usage
 
-Prepare environment, run tests, run development server:
+Prepare environment:
 
     make env
+
+Run tests:
+
     make test
+
+Run development server:
+
     make devserver
 
 
