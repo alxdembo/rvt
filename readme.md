@@ -39,7 +39,6 @@ cat ../test_cases/input/original_task.json \
 
 ### REST API
 
-Use method POST:
 
     curl -d "@test_cases/input/original_task.json" \
     -H "authorization: Basic dXNlcjpwYXNz" \
