@@ -1,6 +1,7 @@
 # Nester app
 
-## Usage
+
+## TL;DR
 
 Prepare environment:
 
@@ -14,6 +15,20 @@ Run development server:
 
     make devserver
 
+## Structure
+
+Project consists of following packages:
+
+1. nester_app: *Django project folder with router and settings*
+1. api: *REST API*
+1. helpers: *Basic authentication helper and testing helpers*
+1. nester: *Contains the main logic: ```nester.py``` and CLI: ```nest.py```* 
+1. test_cases: *Testing scenarios containing inputs and outputs*  
+
+## Authentication
+
+REST API authenticates against backends provided in the project. By default it is sqlite database.
+Demo user is provided in ```api/fixtures``` and is loaded automatically using ```make dev_server``` 
 
 ### CLI
 ```bash
