@@ -30,14 +30,14 @@ Project consists of following packages:
 REST API authenticates against backends provided in the project. By default it is sqlite database.
 Demo user is provided in ```api/fixtures``` and is loaded automatically using ```make dev_server``` 
 
-### CLI
+## CLI
 ```bash
 cd nester
 cat ../test_cases/input/original_task.json \
  | python3 nest.py currency country city
 ```
 
-### REST API
+## REST API
 
 
     curl -d "@test_cases/input/original_task.json" \
