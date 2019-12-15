@@ -25,6 +25,8 @@ Project consists of following packages:
 1. nester: *Contains the main logic: ```nester.py``` and CLI: ```nest.py```* 
 1. test_cases: *Testing scenarios containing inputs and outputs*  
 
+Environment settings are stored in ```nester_app/local.py```
+
 ## Authentication
 
 REST API authenticates against backends provided in the project. By default it is sqlite database.
