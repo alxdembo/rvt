@@ -22,4 +22,4 @@ class ApiNest(View):
         except ValueError as e:
             JsonResponse({"error": f"Inappropriate value: {e}\n"}, status=422)
 
-        return JsonResponse({"error": f"nothing"}, status=422)
+        return JsonResponse({"error": f"Malformed JSON"}, status=422)

@@ -31,6 +31,7 @@ REST API authenticates against backends provided in the project. By default it i
 Demo user is provided in ```api/fixtures``` and is loaded automatically using ```make dev_server``` 
 
 ## CLI
+
 ```bash
 cd nester
 cat ../test_cases/input/original_task.json \
